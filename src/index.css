@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 99%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 165 80% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 165 12% 95%;
+    --secondary-foreground: 220 15% 30%;
+
+    --muted: 210 10% 94%;
+    --muted-foreground: 215 10% 48%;
+
+    --accent: 165 80% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 150 70% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 40 95% 50%;
+    --warning-foreground: 220 20% 10%;
+
+    --border: 165 8% 91%;
+    --input: 165 6% 96%;
+    --ring: 165 80% 38%;
+
+    --radius: 0.75rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(165 80% 38%), hsl(175 75% 40%), hsl(185 65% 42%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(165 8% 98%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(165 80% 38% / 0.06), transparent 70%);
+    --shadow-glow: 0 0 40px -8px hsl(165 80% 38% / 0.18);
+    --shadow-card: 0 1px 3px 0 hsl(220 20% 10% / 0.03), 0 4px 12px -2px hsl(220 20% 10% / 0.04);
+    --shadow-card-hover: 0 4px 20px -4px hsl(220 20% 10% / 0.08), 0 1px 3px 0 hsl(220 20% 10% / 0.03);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background: hsl(165 80% 38% / 0.15);
+    color: hsl(220 20% 10%);
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-glass {
+    background: hsl(0 0% 100% / 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(165 8% 91%);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card-glass:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .dark-section {
+    background: linear-gradient(180deg, hsl(220 25% 12%), hsl(220 20% 8%));
+    color: hsl(210 20% 92%);
+  }
+
+  .section-alt {
+    background: hsl(var(--secondary));
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.33%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes logo-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.33%); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Subtle animated mesh bg */
+  .mesh-bg {
+    background-image:
+      radial-gradient(at 15% 25%, hsl(165 80% 38% / 0.05) 0px, transparent 50%),
+      radial-gradient(at 85% 15%, hsl(180 70% 42% / 0.04) 0px, transparent 50%),
+      radial-gradient(at 55% 85%, hsl(165 80% 38% / 0.03) 0px, transparent 50%),
+      radial-gradient(at 30% 60%, hsl(195 60% 50% / 0.02) 0px, transparent 40%),
+      linear-gradient(180deg, hsl(0 0% 99%) 0%, hsl(165 8% 97%) 100%);
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
