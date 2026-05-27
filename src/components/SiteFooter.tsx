@@ -99,14 +99,14 @@ const SiteFooter = ({ onNavigate }: SiteFooterProps) => {
               <h4 className="text-sm font-semibold text-white mb-4">Support</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="mailto:skilldex07@gmail.com" className={linkClass}>
+                  <button onClick={() => navigate("/contact")} className={linkClass}>
                     Contact Us
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="mailto:skilldex07@gmail.com?subject=Help/Support Request" className={linkClass}>
+                  <button onClick={() => navigate("/help-center")} className={linkClass}>
                     Help Center
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>

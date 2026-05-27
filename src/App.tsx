@@ -12,6 +12,8 @@ import AdminDashboard from "./pages/AdminDashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CheckoutPage from "./pages/Checkout.tsx"; // <-- Added Checkout
 import BillingPage from "./pages/Billing.tsx";
+import Contact from "./pages/Contact.tsx";
+import HelpCenter from "./pages/HelpCenter.tsx";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +33,8 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/billing" element={<BillingPage />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/help-center" element={<HelpCenter />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>
